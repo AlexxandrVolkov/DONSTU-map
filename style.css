@@ -1,0 +1,19 @@
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: 1px solid black;   
+}
+#map { 
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+}
+
+.leaflet-control-draw-measure {
+    background-image: url(measure-control.png);
+}

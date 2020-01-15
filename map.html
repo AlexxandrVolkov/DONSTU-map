@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Карта</title>
+    <link href="L.Control.MousePosition.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.3.2/leaflet.draw.js"></script>
+    <script src="measureControl.js"></script>
+    <script src="mousePosition.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        //    icons
+        var sportIcon = L.icon({
+            iconUrl: 'sport.png',
+            iconSize: [64, 64],
+            iconAnchor: [25, 55],
+            popupAnchor: [7, -45]
+        });
+
+        var parkIcon = L.icon({
+            iconUrl: 'park.png',
+            iconSize: [50, 50],
+            iconAnchor: [22, 55],
+            popupAnchor: [3, -55]
+        });
+
+        var babyIcon = L.icon({
+            iconUrl: 'child1.png',
+            iconSize: [50, 54],
+            iconAnchor: [25, 55],
+            popupAnchor: [0, -52]
+        });
+
+        var mymap = L.map('map', { measureControl: true }).setView([47.240088, 39.710632], 17);
+        L.control.mousePosition().addTo(mymap);
+
+        L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '(c) OSM contributors'
+        }).addTo(mymap);
+
+        var marker = L.marker([47.240088, 39.710632], { icon: parkIcon }).addTo(mymap).
+            bindPopup('Student Park DSTU');
+
+        var marker = L.marker([47.239757, 39.711302], { icon: babyIcon }).addTo(mymap).
+            bindPopup('Baby swing');
+
+        var marker = L.marker([47.239373, 39.709373], { icon: sportIcon }).addTo(mymap).
+            bindPopup('football field');
+
+        var marker = L.marker([47.238856, 39.711465], { icon: sportIcon }).addTo(mymap).
+            bindPopup('gym');
+
+        var marker = L.marker([47.241096, 39.709186], { icon: sportIcon }).addTo(mymap).
+            bindPopup('gym');
+
+    </script>
+
+
+</body>
+
+</html>
